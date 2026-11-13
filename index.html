@@ -42,7 +42,7 @@
 
     .container {
       width: 100%;
-      max-width: 440px;
+      max-width: 460px;
       background: var(--card-bg);
       border-radius: 28px;
       box-shadow: var(--shadow);
@@ -157,6 +157,25 @@
       margin-top: 12px;
     }
 
+    .admin-entry-wrap {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px dashed #e2e8f0;
+      text-align: center;
+    }
+
+    .admin-entry-btn {
+      background: none;
+      border: none;
+      color: #64748b;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* Quiz */
     .quiz-top {
       display: flex;
       justify-content: space-between;
@@ -299,6 +318,7 @@
       cursor: default;
     }
 
+    /* Result */
     .result-top {
       display: flex;
       flex-direction: column;
@@ -407,6 +427,107 @@
       word-break: keep-all;
     }
 
+    /* Admin Dashboard */
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .live-dot-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fef2f2;
+      color: #dc2626;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 5px 10px;
+      border-radius: 999px;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: #dc2626;
+      border-radius: 50%;
+      animation: pulse 1.2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .total-box {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #ffffff;
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .total-label {
+      font-size: 13px;
+      color: #94a3b8;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .total-num {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    .stat-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .stat-card-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 12px;
+    }
+
+    .bar-row {
+      margin-bottom: 11px;
+    }
+
+    .bar-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .bar-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 700;
+      color: #334155;
+      margin-bottom: 5px;
+    }
+
+    .bar-bg {
+      width: 100%;
+      height: 10px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar-val {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.4s ease;
+    }
+
     .toast {
       position: fixed;
       bottom: 28px;
@@ -444,11 +565,11 @@
           <span class="lbl">사라진 계절</span>
         </div>
         <div class="signal-chip">
-          <span class="emoji" aria-hidden="true">💸</span>
-          <span class="lbl">물가·지갑 체감</span>
+          <span class="emoji" aria-hidden="true">🦟</span>
+          <span class="lbl">빨라진 벌레</span>
         </div>
         <div class="signal-chip">
-          <span class="emoji" aria-hidden="true">🔋</span>
+          <span class="emoji" aria-hidden="true">♻️</span>
           <span class="lbl">분리수거 고민</span>
         </div>
       </div>
@@ -458,7 +579,11 @@
       </div>
 
       <button type="button" class="primary-btn" onclick="startQuiz()">내 기후 온도 측정하기 →</button>
-      <p class="meta-note">총 5문항 • 소요 시간 약 30초 • 별도 정보 수집 없음</p>
+      <p class="meta-note">총 5문항 • 소요 시간 약 30초 • 개인정보 수집 없음</p>
+
+      <div class="admin-entry-wrap">
+        <button type="button" class="admin-entry-btn" onclick="openAdminScreen()">📊 발표자 실시간 집계 보기</button>
+      </div>
     </section>
 
     <!-- 2. 질문 -->
@@ -518,174 +643,72 @@
 
       <p class="disclaimer">※ 본 체크리스트는 발표 공감과 자기 이해를 돕기 위한 참여형 콘텐츠이며, 의학적·심리학적 진단 도구가 아닙니다.</p>
     </section>
-  </main>
 
-  <div id="toast" class="toast" role="status" aria-live="polite">결과와 링크가 복사되었습니다!</div>
+    <!-- 4. 발표자용 실시간 집계 화면 -->
+    <section id="adminScreen" class="screen" aria-label="실시간 전체 집계 결과">
+      <div class="admin-header">
+        <span class="badge" style="margin-bottom:0;">🌱 발표자 실시간 현황</span>
+        <span class="live-dot-badge"><span class="live-dot"></span> LIVE 3초 자동갱신</span>
+      </div>
 
-  <script>
-    const questions = [
-      {
-        text: "설레는 마음으로 산 봄·가을 옷을 며칠 못 입고 옷장에 넣으며 속상했던 적이 있다.",
-        tag: "#사라진_계절"
-      },
-      {
-        text: "캠퍼스 벚꽃이 예년보다 너무 일찍 피는 걸 보며, 예쁘다는 생각보다 '올여름 또 얼마나 더울까'라는 걱정이 먼저 든 적이 있다.",
-        tag: "#계절_불안"
-      },
-      {
-        text: "카공하러 갈 때 텀블러를 못 챙겨서 일회용 컵을 사용하며 왠지 모르게 눈치가 보인 적이 있다.",
-        tag: "#일회용품_찝찝함"
-      },
-      {
-        text: "예년보다 훨씬 빨리 찾아오는 러브버그나 모기를 볼 때마다, '아, 뭔가 좀 이상하다' 라고 생각한 적이 있다.",
-        tag: "#물가_지갑_체감"
-      },
-      {
-        text: "페트병 라벨을 떼고 분리수거를 하면서도 '내 작은 노력이 무슨 의미가 있나' 싶어 무력감을 느낀 적이 있다.",
-        tag: "#무력감_신호"
-      }
-    ];
+      <div class="total-box">
+        <div class="total-label">현재까지 참여한 학우 수</div>
+        <div id="adminTotal" class="total-num">0명</div>
+      </div>
 
-    let currentIdx = 0;
-    let answers = new Array(questions.length).fill(null);
-    let latestCopyText = "";
-    let isTransitioning = false;
+      <div class="stat-card">
+        <div class="stat-card-title">🌡️ 온도 단계별 분포</div>
 
-    function calcTemperature(yesCount) {
-      return (21.0 + yesCount * 2.4).toFixed(1);
-    }
+        <div class="bar-row">
+          <div class="bar-info">
+            <span>🌤️ 선선한 온도 (0~1개)</span>
+            <span id="statLowText">0명 (0%)</span>
+          </div>
+          <div class="bar-bg"><div id="statLowBar" class="bar-val" style="width:0%; background:#10b981;"></div></div>
+        </div>
 
-    function showScreen(id) {
-      document.querySelectorAll(".screen").forEach(el => el.classList.remove("active"));
-      document.getElementById(id).classList.add("active");
-    }
+        <div class="bar-row">
+          <div class="bar-info">
+            <span>🌦️ 마음쓰임 온도 (2~3개)</span>
+            <span id="statMidText">0명 (0%)</span>
+          </div>
+          <div class="bar-bg"><div id="statMidBar" class="bar-val" style="width:0%; background:#f59e0b;"></div></div>
+        </div>
 
-    function startQuiz() {
-      currentIdx = 0;
-      answers = new Array(questions.length).fill(null);
-      isTransitioning = false;
-      renderQuestion();
-      showScreen("quizScreen");
-    }
+        <div class="bar-row">
+          <div class="bar-info">
+            <span>☀️ 깊이 체감 온도 (4~5개)</span>
+            <span id="statHighText">0명 (0%)</span>
+          </div>
+          <div class="bar-bg"><div id="statHighBar" class="bar-val" style="width:0%; background:#ef4444;"></div></div>
+        </div>
+      </div>
 
-    function renderQuestion() {
-      const total = questions.length;
-      document.getElementById("stepText").textContent = `질문 ${currentIdx + 1} / ${total}`;
-      document.getElementById("progressFill").style.width = `${((currentIdx + 1) / total) * 100}%`;
+      <div class="stat-card">
+        <div class="stat-card-title">🙋 문항별 '그렇다(O)' 공감률</div>
 
-      const yesCount = answers.filter(v => v === true).length;
-      document.getElementById("liveTemp").textContent = `🌡️ ${calcTemperature(yesCount)}°C`;
+        <div class="bar-row">
+          <div class="bar-info"><span>Q1. 봄·가을 옷 허탈감</span><span id="statQ1Text">0명 (0%)</span></div>
+          <div class="bar-bg"><div id="statQ1Bar" class="bar-val" style="width:0%; background:#0284c7;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-info"><span>Q2. 일찍 핀 벚꽃 & 여름 걱정</span><span id="statQ2Text">0명 (0%)</span></div>
+          <div class="bar-bg"><div id="statQ2Bar" class="bar-val" style="width:0%; background:#0284c7;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-info"><span>Q3. 카공 일회용 컵 눈치</span><span id="statQ3Text">0명 (0%)</span></div>
+          <div class="bar-bg"><div id="statQ3Bar" class="bar-val" style="width:0%; background:#0284c7;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-info"><span>Q4. 빨라진 러브버그·모기</span><span id="statQ4Text">0명 (0%)</span></div>
+          <div class="bar-bg"><div id="statQ4Bar" class="bar-val" style="width:0%; background:#0284c7;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-info"><span>Q5. 분리수거 작은 노력 무력감</span><span id="statQ5Text">0명 (0%)</span></div>
+          <div class="bar-bg"><div id="statQ5Bar" class="bar-val" style="width:0%; background:#0284c7;"></div></div>
+        </div>
+      </div>
 
-      document.getElementById("qNum").textContent = `Q${currentIdx + 1}`;
-      document.getElementById("qText").textContent = questions[currentIdx].text;
-
-      document.getElementById("yesBtn").classList.toggle("selected", answers[currentIdx] === true);
-      document.getElementById("noBtn").classList.toggle("selected", answers[currentIdx] === false);
-      document.getElementById("prevBtn").disabled = currentIdx === 0;
-    }
-
-    function answer(val) {
-      if (isTransitioning) return;
-      isTransitioning = true;
-      answers[currentIdx] = val;
-
-      setTimeout(() => {
-        if (currentIdx < questions.length - 1) {
-          currentIdx++;
-          renderQuestion();
-        } else {
-          showResult();
-        }
-        isTransitioning = false;
-      }, 120);
-    }
-
-    function prevQuestion() {
-      if (isTransitioning || currentIdx === 0) return;
-      currentIdx--;
-      renderQuestion();
-    }
-
-    function showResult() {
-      const yesCount = answers.filter(v => v === true).length;
-      const exactTemp = `${calcTemperature(yesCount)}°C`;
-
-      document.getElementById("countPill").textContent = `5개 항목 중 ${yesCount}개 공감`;
-
-      const hero = document.getElementById("resultHero");
-      const emojiEl = document.getElementById("resultEmoji");
-      const tempEl = document.getElementById("resultTemp");
-      const titleEl = document.getElementById("resultTitle");
-      const descEl = document.getElementById("resultDesc");
-
-      let tierTitle = "";
-
-      if (yesCount <= 1) {
-        emojiEl.textContent = "🌤️";
-        tierTitle = "변화를 차분히 바라보는 선선한 온도";
-        descEl.textContent = "아직 기후위기가 일상을 크게 흔들진 않지만, 우리 주변 계절과 캠퍼스 풍경 속에는 작은 변화들이 쌓이고 있어요. 내 옆자리 친구들은 이 변화를 어떤 온도로 느끼고 있는지 오늘 발표에서 함께 들여다봐요!";
-        hero.style.background = "linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)";
-        tempEl.style.color = "#047857";
-        titleEl.style.color = "#065f46";
-      } else if (yesCount <= 3) {
-        emojiEl.textContent = "🌦️";
-        tierTitle = "일상의 신호에 마음이 쓰이는 온도";
-        descEl.textContent = "변덕스러운 날씨와 일회용품 앞에서 마음이 쓰이는 감각을 가졌네요! 나만 예민한가 싶어 넘겼던 그 찝찝함은 이상한 게 아니라, 변화하는 세상을 성실하게 감지하고 있다는 자연스러운 기후 감수성입니다. 혼자 고민하지 않도록 함께 이야기해 봐요.";
-        hero.style.background = "linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%)";
-        tempEl.style.color = "#b45309";
-        titleEl.style.color = "#92400e";
-      } else {
-        emojiEl.textContent = "☀️";
-        tierTitle = "기후위기의 무게를 깊이 체감하는 온도";
-        descEl.textContent = "기후변화의 불안과 무력감을 누구보다 가까이서 체감하고 계시네요. 거대한 위기 앞에서 혼자 죄책감을 느끼면 지치기 쉽지만, 같은 마음을 가진 공동체와 연결될 때 회복의 힘이 생깁니다. 지금부터 저희의 해결책을 소개하겠습니다!";
-        hero.style.background = "linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%)";
-        tempEl.style.color = "#be123c";
-        titleEl.style.color = "#9f1239";
-      }
-
-      tempEl.textContent = exactTemp;
-      titleEl.textContent = tierTitle;
-
-      const tagsWrap = document.getElementById("tagsWrap");
-      tagsWrap.innerHTML = "";
-      const selectedTags = questions.filter((_, idx) => answers[idx] === true).map(q => q.tag);
-      const displayTags = selectedTags.length ? selectedTags : ["#아직_평온한_일상"];
-
-      displayTags.forEach(tag => {
-        const span = document.createElement("span");
-        span.className = "tag-item";
-        span.textContent = tag;
-        tagsWrap.appendChild(span);
-      });
-
-      const pageUrl = window.location.href.split("?")[0];
-      latestCopyText = `[내 마음 기후 온도계 🌡️]\n나의 기후 감수성 온도: ${exactTemp} (${tierTitle})\n공감 신호: ${displayTags.join(" ")}\n나도 측정해 보기 👉 ${pageUrl}`;
-      showScreen("resultScreen");
-    }
-
-    function copyResult() {
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(latestCopyText).then(showToast);
-      } else {
-        const ta = document.createElement("textarea");
-        ta.value = latestCopyText;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand("copy");
-        document.body.removeChild(ta);
-        showToast();
-      }
-    }
-
-    function showToast() {
-      const toast = document.getElementById("toast");
-      toast.classList.add("show");
-      setTimeout(() => toast.classList.remove("show"), 2000);
-    }
-
-    function restartQuiz() {
-      showScreen("introScreen");
-    }
-  </script>
-</body>
-</html>
+      <div class="action-stack" style="margin-bottom:0;">
+        <button type="button" class="primary-btn" onclick="fetchAdminStats(true)">↻ 지금 새로고침</button>
+        <button type="button" class="secondary-btn"
