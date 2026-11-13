@@ -112,4 +112,587 @@
       background: #f8fafc;
       border: 1px solid #e2e8f0;
       border-radius: 16px;
-      padding: 12px 6
+      padding: 12px 6px;
+      text-align: center;
+    }
+
+    .tier-chip .emoji {
+      font-size: 22px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .tier-chip .deg {
+      font-size: 13px;
+      font-weight: 800;
+      color: #0f172a;
+      display: block;
+    }
+
+    .tier-chip .lbl {
+      font-size: 11px;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    .intro-box {
+      background: #f8fafc;
+      border-radius: 18px;
+      padding: 16px;
+      font-size: 14px;
+      color: #334155;
+      margin-bottom: 24px;
+      word-break: keep-all;
+      border: 1px solid #f1f5f9;
+    }
+
+    .primary-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: 16px;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 20px -6px rgba(2, 132, 199, 0.5);
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .primary-btn:active {
+      transform: scale(0.98);
+    }
+
+    .meta-note {
+      text-align: center;
+      font-size: 12px;
+      color: #94a3b8;
+      margin-top: 12px;
+    }
+
+    /* Quiz Screen */
+    .quiz-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .step-text {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0284c7;
+    }
+
+    .live-temp {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #f1f5f9;
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #0f172a;
+      transition: all 0.3s ease;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 20%;
+      background: linear-gradient(90deg, #38bdf8, #0284c7);
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+
+    .q-guide {
+      font-size: 13px;
+      color: #64748b;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .question-card {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 24px 20px;
+      min-height: 155px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-bottom: 22px;
+    }
+
+    .q-num {
+      font-size: 14px;
+      font-weight: 800;
+      color: #0284c7;
+      margin-bottom: 8px;
+    }
+
+    .q-text {
+      font-size: 18px;
+      font-weight: 700;
+      color: #0f172a;
+      word-break: keep-all;
+      line-height: 1.5;
+    }
+
+    .ox-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .ox-btn {
+      border-radius: 18px;
+      padding: 18px 12px;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .ox-btn .icon {
+      font-size: 24px;
+    }
+
+    .ox-yes {
+      background: var(--yes-bg);
+      border: 2px solid #bfdbfe;
+      color: var(--yes-text);
+    }
+
+    .ox-yes:hover, .ox-yes.selected {
+      background: #dbeafe;
+      border-color: var(--yes-border);
+      transform: translateY(-2px);
+    }
+
+    .ox-no {
+      background: var(--no-bg);
+      border: 2px solid #e2e8f0;
+      color: var(--no-text);
+    }
+
+    .ox-no:hover, .ox-no.selected {
+      background: #e2e8f0;
+      border-color: #94a3b8;
+      transform: translateY(-2px);
+    }
+
+    .prev-btn {
+      background: none;
+      border: none;
+      color: #64748b;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 6px 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .prev-btn:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+
+    /* Result Screen */
+    .result-top {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .count-pill {
+      display: inline-block;
+      background: #f1f5f9;
+      color: #334155;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .result-hero {
+      border-radius: 22px;
+      padding: 24px 18px;
+      text-align: center;
+      margin-bottom: 18px;
+      transition: background 0.3s ease;
+    }
+
+    .result-emoji {
+      font-size: 46px;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .result-temp {
+      font-size: 36px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+
+    .result-title {
+      font-size: 17px;
+      font-weight: 800;
+      word-break: keep-all;
+    }
+
+    .result-desc {
+      background: #f8fafc;
+      border-radius: 18px;
+      padding: 18px;
+      font-size: 14.5px;
+      color: #334155;
+      line-height: 1.65;
+      word-break: keep-all;
+      margin-bottom: 16px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .tags-section {
+      margin-bottom: 22px;
+    }
+
+    .tags-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #475569;
+      margin-bottom: 8px;
+    }
+
+    .tags-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag-item {
+      background: #e0f2fe;
+      color: #0369a1;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 6px 11px;
+      border-radius: 999px;
+    }
+
+    .action-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .secondary-btn {
+      width: 100%;
+      background: #f1f5f9;
+      color: #334155;
+      border: none;
+      border-radius: 16px;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: rgba(15, 23, 42, 0.92);
+      color: #ffffff;
+      padding: 11px 20px;
+      border-radius: 999px;
+      font-size: 13.5px;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s ease;
+      z-index: 100;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 1. 인트로 화면 -->
+    <div id="introScreen" class="screen active">
+      <div class="badge">🌱 기후 감수성 체크리스트</div>
+      <h1>내 마음 기후 온도계 🌡️</h1>
+      <p class="subtitle">일상에서 한 번이라도 겪어본 상황인지<br />O / X로 가볍게 체크해 보세요!</p>
+
+      <div class="tier-preview">
+        <div class="tier-chip">
+          <span class="emoji">🌤️</span>
+          <span class="deg">22°C</span>
+          <span class="lbl">차분</span>
+        </div>
+        <div class="tier-chip">
+          <span class="emoji">🌦️</span>
+          <span class="deg">29°C</span>
+          <span class="lbl">마음쓰임</span>
+        </div>
+        <div class="tier-chip">
+          <span class="emoji">⛈️</span>
+          <span class="deg">36.5°C</span>
+          <span class="lbl">과부하</span>
+        </div>
+      </div>
+
+      <div class="intro-box">
+        다섯 가지 짧은 일상 질문에 <strong>⭕ 그렇다 / ❌ 아니다</strong>로 답해보세요. 내가 미처 이름 붙이지 못했던 마음속 기후 신호를 확인할 수 있어요.
+      </div>
+
+      <button class="primary-btn" onclick="startQuiz()">테스트 시작하기 →</button>
+      <p class="meta-note">총 5문항 • 소요 시간 약 30초</p>
+    </div>
+
+    <!-- 2. 질문 화면 -->
+    <div id="quizScreen" class="screen">
+      <div class="quiz-top">
+        <span id="stepText" class="step-text">질문 1 / 5</span>
+        <span id="liveTemp" class="live-temp">🌡️ 20.0°C</span>
+      </div>
+      <div class="progress-track">
+        <div id="progressFill" class="progress-fill"></div>
+      </div>
+
+      <p class="q-guide">일상에서 한 번이라도 겪어본 상황인가요?</p>
+      <div class="question-card">
+        <div id="qNum" class="q-num">Q1</div>
+        <div id="qText" class="q-text"></div>
+      </div>
+
+      <div class="ox-group">
+        <button id="yesBtn" class="ox-btn ox-yes" onclick="answer(true)">
+          <span class="icon">⭕</span>
+          <span>그렇다</span>
+        </button>
+        <button id="noBtn" class="ox-btn ox-no" onclick="answer(false)">
+          <span class="icon">❌</span>
+          <span>아니다</span>
+        </button>
+      </div>
+
+      <button id="prevBtn" class="prev-btn" onclick="prevQuestion()">← 이전 질문</button>
+    </div>
+
+    <!-- 3. 결과 화면 -->
+    <div id="resultScreen" class="screen">
+      <div class="result-top">
+        <div class="badge">🌡️ 측정 완료</div>
+        <br />
+        <div id="countPill" class="count-pill">나의 기후 온도 • 5개 중 0개 해당</div>
+      </div>
+
+      <div id="resultHero" class="result-hero">
+        <span id="resultEmoji" class="result-emoji">🌤️</span>
+        <div id="resultTemp" class="result-temp">22°C</div>
+        <div id="resultTitle" class="result-title"></div>
+      </div>
+
+      <div id="resultDesc" class="result-desc"></div>
+
+      <div class="tags-section">
+        <div class="tags-label">🏷️ 내가 공감한 기후 신호</div>
+        <div id="tagsWrap" class="tags-wrap"></div>
+      </div>
+
+      <div class="action-stack">
+        <button class="primary-btn" onclick="copyResult()">📋 결과 텍스트 복사하기</button>
+        <button class="secondary-btn" onclick="restartQuiz()">↻ 다시 테스트하기</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">결과가 복사되었습니다!</div>
+
+  <script>
+    const questions = [
+      {
+        text: "설레는 마음으로 산 봄·가을 옷을 며칠 못 입고 옷장에 넣으며 허탈했다.",
+        tag: "#사라진_계절"
+      },
+      {
+        text: "캠퍼스 벚꽃이 예년보다 너무 일찍 피는 걸 보며 예쁘다는 감탄보다 '올여름 또 얼마나 빨리 오려고 이러지'라는 걱정이 먼저 든다.",
+        tag: "#계절_불안"
+      },
+      {
+        text: "카공하러 갈 때 텀블러를 못 챙겨서 일회용 컵을 받으면서도 왠지 모르게 눈치가 보인 적이 있다.",
+        tag: "#일회용품_찝찝함"
+      },
+      {
+        text: "폭염이나 기습 폭우 때문에 학교 가는 길 자체가 생존처럼 느껴져 아침부터 진이 빠진 적이 있다.",
+        tag: "#등하굣길_스트레스"
+      },
+      {
+        text: "페트병 라벨을 떼고 분리수거를 하면서도 '거대 기업이 뿜어내는 탄소에 비하면 내 작은 노력이 무슨 의미가 있나' 싶어 현타가 온 적이 있다.",
+        tag: "#무력감_신호"
+      }
+    ];
+
+    let currentIdx = 0;
+    let answers = new Array(questions.length).fill(null);
+    let latestCopyText = "";
+
+    function showScreen(id) {
+      document.querySelectorAll(".screen").forEach(el => el.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+    }
+
+    function startQuiz() {
+      currentIdx = 0;
+      answers = new Array(questions.length).fill(null);
+      renderQuestion();
+      showScreen("quizScreen");
+    }
+
+    function renderQuestion() {
+      const total = questions.length;
+      document.getElementById("stepText").textContent = `질문 ${currentIdx + 1} / ${total}`;
+      document.getElementById("progressFill").style.width = `${((currentIdx + 1) / total) * 100}%`;
+
+      const yesCount = answers.filter(v => v === true).length;
+      const calcTemp = (20 + yesCount * 3.3).toFixed(1);
+      document.getElementById("liveTemp").textContent = `🌡️ ${calcTemp}°C`;
+
+      document.getElementById("qNum").textContent = `Q${currentIdx + 1}`;
+      document.getElementById("qText").textContent = questions[currentIdx].text;
+
+      document.getElementById("yesBtn").classList.toggle("selected", answers[currentIdx] === true);
+      document.getElementById("noBtn").classList.toggle("selected", answers[currentIdx] === false);
+      document.getElementById("prevBtn").disabled = currentIdx === 0;
+    }
+
+    function answer(val) {
+      answers[currentIdx] = val;
+      if (currentIdx < questions.length - 1) {
+        currentIdx++;
+        renderQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function prevQuestion() {
+      if (currentIdx > 0) {
+        currentIdx--;
+        renderQuestion();
+      }
+    }
+
+    function showResult() {
+      const yesCount = answers.filter(v => v === true).length;
+      document.getElementById("countPill").textContent = `나의 기후 온도 • 5개 중 ${yesCount}개 해당`;
+
+      const hero = document.getElementById("resultHero");
+      const emojiEl = document.getElementById("resultEmoji");
+      const tempEl = document.getElementById("resultTemp");
+      const titleEl = document.getElementById("resultTitle");
+      const descEl = document.getElementById("resultDesc");
+
+      let tierTemp = "";
+      let tierTitle = "";
+
+      if (yesCount <= 1) {
+        emojiEl.textContent = "🌤️";
+        tierTemp = "22°C";
+        tierTitle = "내 마음의 기후 온도: 22°C (변화를 차분히 바라보는 단계)";
+        descEl.textContent = "아직 기후위기가 일상을 크게 흔들진 않지만, 이미 주변 계절과 풍경 속에는 작은 변화들이 쌓이고 있어요. 오늘 발표를 통해 우리 주변의 신호들을 함께 살펴봐요!";
+        hero.style.background = "linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)";
+        tempEl.style.color = "#047857";
+        titleEl.style.color = "#065f46";
+      } else if (yesCount <= 3) {
+        emojiEl.textContent = "🌦️";
+        tierTemp = "29°C";
+        tierTitle = "내 마음의 기후 온도: 29°C (조용히 마음이 쓰이는 단계)";
+        descEl.textContent = "일회용품과 변덕스러운 날씨에 마음이 쓰이는 감각을 가졌네요! 그동안 유난이라고 생각했던 그 찝찝함, 사실은 변화하는 세상을 성실하게 감지하고 있다는 건강한 기후우울증 신호입니다.";
+        hero.style.background = "linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%)";
+        tempEl.style.color = "#b45309";
+        titleEl.style.color = "#92400e";
+      } else {
+        emojiEl.textContent = "⛈️";
+        tierTemp = "36.5°C";
+        tierTitle = "내 마음의 기후 온도: 36.5°C (혼자서 무거운 마음을 안고 있는 단계)";
+        descEl.textContent = "기후변화의 불안을 누구보다 가까이서 체감하고 계시네요! 혼자 고민하고 죄책감을 느끼면 무력해지지만, 함께 움직이면 효능감이 생깁니다. 지금부터 저희의 발표를 보시죠!";
+        hero.style.background = "linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%)";
+        tempEl.style.color = "#b91c1c";
+        titleEl.style.color = "#991b1b";
+      }
+
+      tempEl.textContent = tierTemp;
+      titleEl.textContent = tierTitle;
+
+      const tagsWrap = document.getElementById("tagsWrap");
+      tagsWrap.innerHTML = "";
+      const selectedTags = questions.filter((_, idx) => answers[idx] === true).map(q => q.tag);
+
+      if (selectedTags.length === 0) {
+        const span = document.createElement("span");
+        span.className = "tag-item";
+        span.textContent = "#아직_평온한_일상";
+        tagsWrap.appendChild(span);
+      } else {
+        selectedTags.forEach(tag => {
+          const span = document.createElement("span");
+          span.className = "tag-item";
+          span.textContent = tag;
+          tagsWrap.appendChild(span);
+        });
+      }
+
+      latestCopyText = `[내 마음 기후 온도계 🌡️]\n${tierTitle}\n(5개 중 ${yesCount}개 해당)\n공감 신호: ${selectedTags.length ? selectedTags.join(" ") : "#아직_평온한_일상"}`;
+      showScreen("resultScreen");
+    }
+
+    function copyResult() {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(latestCopyText).then(showToast);
+      } else {
+        const ta = document.createElement("textarea");
+        ta.value = latestCopyText;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        showToast();
+      }
+    }
+
+    function showToast() {
+      const toast = document.getElementById("toast");
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 2000);
+    }
+
+    function restartQuiz() {
+      showScreen("introScreen");
+    }
+  </script>
+</body>
+</html>
